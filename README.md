@@ -1,6 +1,6 @@
 # Algebraic Loop Invariant Synthesis
 
-<h3 style="text-align: center;">Prototype implementation of an algorithm for computing polynomial invariants for polynomial loops with fixed initial values.</h3>
+*Prototype implementation of an algorithm for computing polynomial invariants for polynomial loops with fixed initial values.*
 
 This repository contains the source files used for the benchmarks described in the ISSAC'24 submission:
 
