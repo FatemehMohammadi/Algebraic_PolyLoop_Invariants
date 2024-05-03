@@ -5,6 +5,7 @@ R= K[ x_1..x_23,y_1..y_3,a_1..a_3,t,z_1..z_23]
 f1= 1+x_1+x_2+x_1*x_2-x_3
 f2 = x_1
 f3 = x_2
+---The following polynomial is a general polynomial of degree 3 with 3 variables
 f7 =x_4+x_5*x_1+x_6*x_2+x_7*x_3+x_8*x_1^2+x_9*x_2^2+x_10*x_3^2+x_11*x_1*x_2+x_12*x_1*x_3+x_13*x_2*x_3+x_14*x_1^3+x_15*x_2^3+x_16*x_3^3+x_17*x_1^2*x_2+x_18*x_1^2*x_3+x_19*x_2^2*x_1+x_20*x_2^2*x_3+x_21*x_3^2*x_1+x_22*x_3^2*x_2+x_23*x_1*x_2*x_3
 a_1 = 2
 a_2 =-1

@@ -13,6 +13,7 @@ f8 = x_8-x_9*x_11^2
 f9 = x_9+x_7*x_11^2-x_8*x_10^2
 f10 = x_10+(x_3*x_5-x_2*x_6)*x_7+(x_1*x_6-x_3*x_4)*x_8+(x_2*x_4-x_1*x_5)*x_9
 f11 = x_11-x_10^3
+---The following polynomial is a general polynomial of degree 1 with 11 variables
 h1 = x_12*x_1+x_13*x_2+x_14*x_3+x_15*x_4+x_16*x_5+x_17*x_6+x_18*x_7+x_19*x_8+x_20*x_9+x_21*x_10+x_22*x_11+x_23
 a_1 = 3
 a_2 = -1

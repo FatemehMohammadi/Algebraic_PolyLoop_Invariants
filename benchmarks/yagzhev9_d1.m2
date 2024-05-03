@@ -11,6 +11,7 @@ f6 = x_6 - x_5*x_7^2-x_6*x_7*x_9
 f7 = x_7+(x_1*x_4-x_2*x_3)*x_9
 f8 = x_8 +(x_3*x_6-x_4*x_5)*x_9
 f9 = x_9 + (x_1*x_4-x_2*x_3)*x_8-(x_3*x_6+x_4*x_5)*x_7
+---The following polynomial is a general polynomial of degree 1 with 9 variables
 h1 = x_10+x_11*x_1+x_12*x_2+x_13*x_3+x_14*x_4+x_15*x_5+x_16*x_6+x_17*x_7+x_18*x_8+x_19*x_9
 
 a_1 = 2

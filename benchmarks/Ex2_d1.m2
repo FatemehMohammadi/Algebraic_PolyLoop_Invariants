@@ -4,6 +4,7 @@ K = QQ
 R= K[ x_1 .. x_5,t,z_1..z_5]
 f1= 10*x_1-8*x_2
 f2 = 6*x_1-4*x_2
+---The following polynomial is a general polynomial of degree 1 with 2 variables
 f7 = x_3+x_4*x_1+x_5*x_2
 a_1 = 3
 a_2 = 2

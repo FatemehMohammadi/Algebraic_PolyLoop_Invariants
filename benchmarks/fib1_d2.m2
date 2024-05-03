@@ -5,6 +5,7 @@ R= K[ x_1..x_13,y_1..y_3,a_1..a_3,t,z_1..z_13]
 f1= x_2
 f2 = x_3
 f3 = 2*x_2*x_3-x_1
+---The following polynomial is a general polynomial of degree 2 with 3 variables
 f7 =x_4+x_5*x_1+x_6*x_2+x_7*x_3+x_8*x_1^2+x_9*x_2^2+x_10*x_3^2+x_11*x_1*x_2+x_12*x_1*x_3+x_13*x_2*x_3
 a_1 = 2
 a_2 =1
@@ -13,7 +14,7 @@ g = sub(f7, {x_1=>a_1, x_2=>a_2, x_3=>a_3})
 T = ideal(g)
 ---Generating linear equations
 i=0;
-while i< 13 do (
+while i< 9 do (
     print i;
     y_1 = sub(f1,{x_1=>a_1, x_2=>a_2, x_3=>a_3});
     y_2 = sub(f2,{x_1=>a_1, x_2=>a_2, x_3=>a_3});

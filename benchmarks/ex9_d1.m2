@@ -5,6 +5,7 @@ R= K[ x_1..x_7,y_1..y_3,a_1..a_3,t,z_1..z_7]
 f1= x_1+x_3^2+1
 f2 = x_2-x_3^2
 f3 = x_3+(x_1+x_2)^2
+---The following polynomial is a general polynomial of degree 1 with 3 variables
 f7 =x_4+x_5*x_1+x_6*x_2+x_7*x_3
 a_1 = 3
 a_2 =-1

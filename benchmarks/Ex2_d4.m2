@@ -4,6 +4,7 @@ K = QQ
 R= K[ x_1 .. x_17,t,z_1..z_17]
 f1= 10*x_1-8*x_2
 f2 = 6*x_1-4*x_2
+---The following polynomial is a general polynomial of degree 4 with 3 variables
 f7 = x_3+x_4*x_1+x_5*x_2+x_6*x_1*x_2+x_7*x_1^2+x_8*x_2^2+x_9*x_1^2*x_2+x_10*x_2^2*x_1+x_11*x_1^3+x_12*x_2^3+x_13*x_1^3*x_2+x_14*x_1*x_2^3+x_15*x_1^2*x_2^2+x_16*x_1^4+x_17*x_2^4
 a_1 = 3
 a_2 =2

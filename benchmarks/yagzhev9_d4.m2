@@ -11,6 +11,7 @@ f6 = x_6 - x_5*x_7^2-x_6*x_7*x_9
 f7 = x_7+(x_1*x_4-x_2*x_3)*x_9
 f8 = x_8 +(x_3*x_6-x_4*x_5)*x_9
 f9 = x_9 + (x_1*x_4-x_2*x_3)*x_8-(x_3*x_6+x_4*x_5)*x_7
+---Generating a general polynomial of degree 4 with 9 variables
 S = {1, x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8,x_9}
 C =  {1, x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8,x_9}
 i =1

@@ -13,6 +13,7 @@ f8 = x_8-x_9*x_11^2
 f9 = x_9+x_7*x_11^2-x_8*x_10^2
 f10 = x_10+(x_3*x_5-x_2*x_6)*x_7+(x_1*x_6-x_3*x_4)*x_8+(x_2*x_4-x_1*x_5)*x_9
 f11 = x_11-x_10^3
+---Generating a general polynomial of degree 4 with 11 variables
 S = {1, x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8,x_9,x_10,x_11}
 C =  {1, x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8,x_9,x_10,x_11}
 i =1

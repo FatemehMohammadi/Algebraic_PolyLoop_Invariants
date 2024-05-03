@@ -1,11 +1,12 @@
 restart
 t1 = cpuTime()
 K = QQ
-R= K[ x_1..x_13,y_1..y_3,a_1..a_3,t,z_1..z_13]
+R= K[ x_1..x_7,y_1..y_3,a_1..a_3,t,z_1..z_7]
 f1= x_2
 f2 = x_3
 f3 = 2*x_2*x_3-x_1
-f7 =x_4+x_5*x_1+x_6*x_2+x_7*x_3+x_8*x_1^2+x_9*x_2^2+x_10*x_3^2+x_11*x_1*x_2+x_12*x_1*x_3+x_13*x_2*x_3
+---The following polynomial is a general polynomial of degree 1 with 3 variables
+f7 =x_4+x_5*x_1+x_6*x_2+x_7*x_3
 a_1 = 2
 a_2 =1
 a_3 = 1
@@ -13,7 +14,7 @@ g = sub(f7, {x_1=>a_1, x_2=>a_2, x_3=>a_3})
 T = ideal(g)
 ---Generating linear equations
 i=0;
-while i< 9 do (
+while i< 4 do (
     print i;
     y_1 = sub(f1,{x_1=>a_1, x_2=>a_2, x_3=>a_3});
     y_2 = sub(f2,{x_1=>a_1, x_2=>a_2, x_3=>a_3});
@@ -28,7 +29,7 @@ while i< 9 do (
 T = trim T
 S={}
 n = numgens T
-m = 10
+m = 4
 i =0
 ---Making a matrix from linear equations to compute candidates for polynomial invariants
 while i< n do(
@@ -41,7 +42,7 @@ while i< n do(
 	k=k+1;
 	);
     while j <  m+1 do(
-	b=sub(T_i,{x_4=>a_1, x_5=>a_2, x_6=>a_3,x_7=>a_4,x_8=>a_5,x_9=>a_6, x_10=>a_7, x_11=>a_8, x_12=>a_9, x_13=>a_10});       
+	b=sub(T_i,{x_4=>a_1, x_5=>a_2,x_6=>a_3,x_7=>a_4});       
 	U_i = join(U_i, {b});   
 	a_j = a_(j+1);
     	a_(j+1)= a_(j+1)+1;
@@ -59,7 +60,7 @@ t2 =cpuTime()
 A=ker M
 B = matrix{{ }}
 A = generators A
-a = matrix{{1},{x_1},{x_2},{x_3},{x_1^2},{x_2^2},{x_3^2}, {x_1*x_2},{x_1*x_3},{x_2*x_3}}
+a = matrix{{1},{x_1},{x_2},{x_3}}
 P = transpose(a)*A
 t3 = cpuTime()
 n = numgens source P
