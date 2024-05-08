@@ -20,14 +20,14 @@ In this directory, you will find a the source code together with a directory "lo
 A short way to run the software is by the command:
 
 ```
-M2 main.m2 -e 'computeInvariants("<loop-name>.m2",<invariants-max-degree>)'
+M2 main.m2 -e 'computeInvariants("<loops/loop-name>.m2",<invariants-max-degree>)'
 ```
 
 An alternative way is to run the following Macaulay commands (which requires to run Macaulay2 in the same directory):
 
 ```
 load "main.m2"
-computeInvariants("<loop-name>.m2",<invariants-max-degree>)
+computeInvariants("<loops/loop-name>.m2",<invariants-max-degree>)
 ```
 
 The output consists of three elements:
