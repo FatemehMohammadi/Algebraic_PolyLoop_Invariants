@@ -92,7 +92,7 @@ computebasis(ZZ,ZZ,List,List) :=(n,d,F,c)-> (
       T = T +ideal(h);
       i=i+1;
 	);
----Contructing a matrix from linear equations    
+---Constructing a matrix from linear equations    
 M = transpose (coefficients gens T)_1;
 M = sub(M, QQ);
 M = reducedRowEchelonForm M;
