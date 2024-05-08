@@ -1,3 +1,0 @@
-load "monomials.m2"
-
-monomial(2,2)
