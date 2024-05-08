@@ -1,0 +1,26 @@
+R = QQ[x_1,x_2,x_3]
+I = ideal(1+x_1+x_2+x_3, x_3^2-x_3)
+n = 3
+d = 4
+i =0 ;
+J = ideal(0_R)
+while i< numgens I do (
+   v = (degree I_i)_0;
+    m = d -v; 
+     S = 1;
+    j=1 ;
+    while j< n+1 do (
+    	S = S+x_j;
+    	j = j+1;
+    	);
+    if m > -1 then(
+    C = first entries monomials S^m;
+    j =0;
+    while j< length C do (
+        J = ideal(J, I_i*C_j);
+	j=j+1;	
+	);
+    );
+    i = i+1;
+    )
+rank (coefficients gens J)_1
