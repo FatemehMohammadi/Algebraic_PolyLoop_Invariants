@@ -7,7 +7,7 @@ This repository contains two directories, that contain both implementation in [M
 * **Algebraic Tools for Computing Polynomial Loop Invariants** <br>*E. Bayarmagnai, F. Mohammadi, R. Prébet*
 
 ---
-The directory **"benchmark"** contains the source files used for the experiments reported in the above submission. Each of these files can be run using the following command in the terminal:
+The directory **"benchmarks"** contains the source files used for the experiments reported in the above submission. Each of these files can be run using the following command in the terminal:
 
 ```
 M2 <benchmark-name>_d<invariants-max-degree>.m2
