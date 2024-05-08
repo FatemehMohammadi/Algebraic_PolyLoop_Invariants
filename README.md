@@ -23,10 +23,10 @@ A short way to run the software is by the command:
 M2 main.m2 -e 'computeInvariants("<loop-name>.m2",<invariants-max-degree>)'
 ```
 
-An alternative way is to run the following Macaulay commands (which requires to run Macaulay2 by some chosen way):
+An alternative way is to run the following Macaulay commands (which requires to run Macaulay2 in the same directory):
 
 ```
-load "<path-to-directory>/main.m2"
+load "main.m2"
 computeInvariants("<loop-name>.m2",<invariants-max-degree>)
 ```
 
