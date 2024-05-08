@@ -1,5 +1,6 @@
 computebasis = method()
 computebasis(ZZ,ZZ,List,List) :=(n,d,F,c)-> (
+    ---Using a vector basis of the (d-1)th truncated ideal to find a lower bound for the dimension of the dth truncated ideal. 
     r =0;
      if d>1 then (
     computebasis(n,d-1,F,c);
@@ -25,11 +26,13 @@ computebasis(ZZ,ZZ,List,List) :=(n,d,F,c)-> (
     	    );
     	i = i+1;
     	);
+    --- The dimension of the dth truncated ideal is greater than or equal to the following number r.
     	r = rank (coefficients gens J)_1 ;
     );
     M = binomial(n+d,d);
     S = 1;
     i =1 ;
+---Generating all monomials with n variables up to degree d.     
     while i< n+1 do (
     	S = S+x_i;
     	i = i+1;
@@ -37,6 +40,7 @@ computebasis(ZZ,ZZ,List,List) :=(n,d,F,c)-> (
     C = first entries monomials S^d;
     g =0;
     i=1;
+---Generating a general polynomial of degree d with n variables
     while i<M+1 do (
     	g = g+y_i*C_(i-1);
     	i = i+1;
@@ -60,6 +64,7 @@ computebasis(ZZ,ZZ,List,List) :=(n,d,F,c)-> (
       h = sub(g,A);
       T = ideal(h);
     i=0;
+---Generating linear equatons to compute candidates for polynomial invariants. 
     while i < M-r do (
 	j=0;
 	while j<n do(
@@ -87,13 +92,16 @@ computebasis(ZZ,ZZ,List,List) :=(n,d,F,c)-> (
       T = T +ideal(h);
       i=i+1;
 	);
+---Contructing a matrix from linear equations    
 M = transpose (coefficients gens T)_1;
 M = sub(M, QQ);
 M = reducedRowEchelonForm M;
+---Compute candidates
 A = ker M;
 B = matrix{{ }};
 A = generators A;
 N = matrix{C};
+---Generating candidates
 P =N*A;
 l = numgens source P;
 ---Finding a vector basis for a truncated ideal.
