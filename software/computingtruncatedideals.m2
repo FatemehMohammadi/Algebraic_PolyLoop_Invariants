@@ -142,20 +142,20 @@ if S!=ideal(0_R) then(
 A = matrix{{}};
 j =0;
 while j< l do(
-    f = P_(0,j);
-    X_0 = ideal(f);
+    g = P_(0,j);
+    X_0 = ideal(g);
     D= {x_1=>f_1};
 	t =  2;
 	while t<n+1 do(
 	    D =join(D,{x_t=>f_t});
 		t=t+1; 
 		);
-    f = sub(f,D);
+    g = sub(g,D);
     i = 0;
-    while  ideal(X_i, 1-f*e) != ideal(1_R)  do (
+    while  ideal(X_i, 1-g*e) != ideal(1_R)  do (
     	print i;
-    	X_(i+1) = ideal(X_i, f);
-    	f = sub(f,D);
+    	X_(i+1) = ideal(X_i, g);
+    	g = sub(g,D);
 	i=i+1;
 	);
      D = {x_1=>c_0};
