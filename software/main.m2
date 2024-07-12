@@ -1,5 +1,6 @@
 restart
 ---Loading the main algorithm.
+load "particularform.m2"
 load "computingtruncatedideals.m2"
 computeInvariants = method()
 computeInvariants(String, ZZ) := (u,d)->(
@@ -7,8 +8,10 @@ t1 = cpuTime();
 ---Loading an example 
 load u;    
 M = binomial(n+d,d);
+U = binomial(n+d,d);
 K = QQ;
-R = K[x_1..x_n,z_1..z_M,y_1..y_M,e];
+R2  = QQ[z_1..z_M][x_1..x_n, y_1..y_M];
+R = K[x_1..x_n,z_1..z_M,y_1..y_M,e,,w_1..w_n];
 ---Extracting polynomial mappings and initial values from an example.
 F = mapping();
 c = initial();
@@ -55,5 +58,21 @@ i=i+1;
 << " and the dimension of the truncated ideal is "<<numgens source A<<". "<< endl;
  << "The running time is " <<t4-t1<< endl;
 );
+particularform(A);
+t2 =cpuTime();
+<< "------------------------------------------------------"<< endl;
+i=0;
+if numgens source H ==0 then(
+<< "There is no general polynomial of a form g(x)-g(w)=0. "<< endl;
+);
+if numgens source H>0 then(
+<< "General polynomal invariants of a form g(x)-g(w)=0 are "<< endl;
+while i < numgens source H do(
+<< H_i<< endl;
+i=i+1;
+);
+);
+<< "where w_i is an initial value of x_i"<< endl;
+<< "The running time is " <<t2-t1<< endl;
 )
 end --
