@@ -93,7 +93,7 @@ computebasis(ZZ,ZZ,List,List) :=(n,d,F,c)-> (
       i=i+1;
 	);
 ---Constructing a matrix from linear equations    
-M = transpose (coefficients gens T)_1;
+M = transpose (coefficients (gens T,Monomials=>{y_1..y_M}))_1;
 M = sub(M, QQ);
 M = reducedRowEchelonForm M;
 ---Compute candidates
