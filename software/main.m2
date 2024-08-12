@@ -75,4 +75,42 @@ i=i+1;
 << "where w_i is an initial value of x_i"<< endl;
 << "The running time is " <<t2-t1<< endl;
 )
+computeGeneralInvariants = method();
+computeGeneralInvariants(String, ZZ) := (u,d)->(
+t1 = cpuTime();
+---Loading an example 
+load u;    
+M = binomial(n+d,d);
+U = binomial(n+d,d);
+K = QQ;
+R2  = QQ[z_1..z_M][x_1..x_n, y_1..y_M];
+R = K[x_1..x_n,z_1..z_M,y_1..y_M,e,,w_1..w_n];
+---Extracting polynomial mappings and initial values from an example.
+F = mapping();
+c = {random(-1,1)};
+i=1;
+while i < n do (
+	c = join(c,{random(-1,1)});
+	i = i+1;
+);
+computebasis(n,d,F,c);
+---This is output: Giving a vector basis and the dimension for the dth truncated ideal of an example.
+t4 = cpuTime();
+particularform(A);
+t2 =cpuTime();
+<< "------------------------------------------------------"<< endl;
+i=0;
+if numgens source H ==0 then(
+<< "There is no general polynomial of a form g(x)-g(w)=0. "<< endl;
+);
+if numgens source H>0 then(
+<< "General polynomal invariants of a form g(x)-g(w)=0 are "<< endl;
+while i < numgens source H do(
+<< H_i<< endl;
+i=i+1;
+);
+);
+<< "where w_i is an initial value of x_i"<< endl;
+<< "The running time is " <<t2-t1<< endl;
+)
 end --
