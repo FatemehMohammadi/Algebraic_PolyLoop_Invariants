@@ -123,7 +123,6 @@ D= {x_1=>f_1};
     i = 0;
     while  isSubset(X_(i+1), X_i)==false  do (
     	i = i+1;
-	print i;
     	X_(i+1) = sub(X_i, D) + X_0 ;
 	);
      D = {x_1=>c_0};

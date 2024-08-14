@@ -87,10 +87,10 @@ R2  = QQ[z_1..z_M][x_1..x_n, y_1..y_M];
 R = K[x_1..x_n,z_1..z_M,y_1..y_M,e,,w_1..w_n];
 ---Extracting polynomial mappings and initial values from an example.
 F = mapping();
-c = {random(-1,1)};
+c = {2*(random(0,1)-1/2)};
 i=1;
 while i < n do (
-	c = join(c,{random(-1,1)});
+	c = join(c,{2*(random(0,1)-1/2)});
 	i = i+1;
 );
 computebasis(n,d,F,c);
