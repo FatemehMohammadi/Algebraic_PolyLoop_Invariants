@@ -1,5 +1,4 @@
-opts = {verb => 0, nthreads => 1, mspath => "msolve/msolve"};
-MSolveGroebner = opts >> o -> (F) -> (
+MSolveGroebner = {verb => 0, nthreads => 1, mspath => "msolve/msolve"} >> o -> (F) -> (
     R = ring F#0;
 
     alph = random(toList(join("a".."z","A".."Z")));
