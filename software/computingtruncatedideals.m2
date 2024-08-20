@@ -64,7 +64,7 @@ computebasis(ZZ,ZZ,List,List) :=(n,d,F,c)-> (
       h = sub(g,A);
       T = ideal(h);
     i=0;
----Generating linear equatons to compute candidates for polynomial invariants. 
+---Generating linear equations to compute candidates for polynomial invariants. 
     while i < M-r do (
 	j=0;
 	while j<n do(
