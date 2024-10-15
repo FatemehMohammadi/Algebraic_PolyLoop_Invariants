@@ -217,7 +217,7 @@ if numgens source B > 1 then(
      m = numgens source B;
      i =0;
      while i< l do(
-    	 U_i =S;
+    	 Um_i =S;
     	 j =1;
     	 k = 2;
     	 a_1 =1;
@@ -232,18 +232,18 @@ if numgens source B > 1 then(
 		 t = t+1;
 		 D = join(D,{z_t=>a_t});
 		 );
-	     b=sub(T_i,D);       
-	     U_i = join(U_i, {b});   
+	     ba=sub(T_i,D);       
+	     Um_i = join(Um_i, {ba});   
 	     a_j = a_(j+1);
     	     a_(j+1)= a_(j+1)+1;
 	     j = j+1;
 	     );
     	 i = i+1;
     	 );  
-     M = matrix{U_0, U_1};
+     M = matrix{Um_0, Um_1};
      i=0;
-     while i< n-2 do(
-    	 M = M||matrix{ U_(i+2)};
+     while i< l-2 do(
+    	 M = M||matrix{ Um_(i+2)};
     	 i = i+1;
     	 );
      A1=ker M;
