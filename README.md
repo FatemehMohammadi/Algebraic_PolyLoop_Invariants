@@ -30,8 +30,15 @@ load "main.m2"
 computeInvariants("<loops/loop-name>.m2",<invariants-max-degree>)
 ```
 
-The output consists of four elements:
-1. a vector space basis of the D-th truncated invariant ideal, where D is the chosen maximum degree; each element of the basis is written on a new line; 
+The output consists of three elements:
+1. a vector space basis of the vector space of all polynomial invariants of degree$\leq$D, where D is the chosen maximum degree; each element of the basis is written on a new line; 
 2. the dimension of the above vector space, that is the cardinal of the above basis;
 3. the total time spent by the software to compute such data.
-4. all polynomial invariants of degree ≤ D of a form $g(x)-g(a)=0$.
+
+```
+computeGeneralInvariants("<loops/loop-name>.m2",<invariants-max-degree>)
+```
+
+The output consists of two elements:
+1. a vector space of the vector space of all polynomial invariants of the form $f(x)-f(a)=0$ with $\deg f\leq D$.
+2. the total time spent by the software to compute such data.
