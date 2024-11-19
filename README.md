@@ -49,8 +49,6 @@ computeMatrix("<loops/loop-name>.m2",<invariants-max-degree>)
 
 The output consists of two elements:
 1. A polynomial matrix $A$ with polynomial entries such that for any $\textbf{a}\in \mathbb{C}$
-$\begin{equation}\label{eq:matrixcon}
-      I_{\mL(\ab, \hb,F),\mathbb{Q}_{\leq D}} = 
-  \left\{ \sum_{ |\alpha_i| \leq D}b_{i}\textbf{x}^{\alpha_i} \mid (b_1,\ldots,b_m) \in \ker\,A(\textbf{a}) \right\}.
-\end{equation}$
+$$      I_{\mL(\ab, \hb,F),\mathbb{Q}_{\leq D}} = 
+  \left\{ \sum_{ |\alpha_i| \leq D}b_{i}\textbf{x}^{\alpha_i} \mid (b_1,\ldots,b_m) \in \ker\,A(\textbf{a}) \right\}.$$
 2. the total time spent by the software to compute such data.
