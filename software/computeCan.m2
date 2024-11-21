@@ -1,34 +1,13 @@
-restart
-load "Compose.m2"
-load "InRadical.m2"
-load "computeCan.m2"
-load "computeCanM.m2"
-R = QQ[x_1,x_2,x_3,e, y_1,y_2]
-Compose({x_1,x_2},{{x_1^2,x_2^2},{x_1^3,x_2^3}},2)
-InRadical({x_1,x_1^2-x_1},{x_1^2})
-n =2 
-G = x_1
-bm = 2
-computeCan({{x_1,x_2+1}}, {2,1,1},{y_1*x_1+y_2*x_2}, 3)
-M=2
-M = computeCanM({{x_1,x_2+1}, {x_1,x_2+1}}, {2,1,1},{y_1*x_1+y_2*x_2}, 3)
-R = QQ[x_1,x_2,x_3,e, y_1,y_2]
-F= {x_1}
-G= x_2
-K =join(F,{G})
-m = 15
-FF = ZZ/7
-m = sub(m,FF)
-
-
-
--------------------------------------------------------------------------------------------
-
-
----Generating a general polynomial of degree d with n variables
-     i = 1;
+computeCan = method()
+computeCan(List, List, List, ZZ) := (maps, In, Inv, It)->(
+i = 0;
+while i < length maps do (
+    F_i = join((maps)_i, {x_(n+1)*G});
+    i = i+1;
+    );    
+  i = 1;
     while i<n+1 do (
-	a_i = c_(i-1);
+	a_i = In_(i-1);
 	i = i+1;
 	);
       A = {x_1=>a_1};
@@ -43,18 +22,17 @@ m = sub(m,FF)
       while t<n+2 do(
 	  A =join(A,{x_t=>a_t});
 	  t=t+1; 
-	  );
-      g = g*x_(n+1);	  
-      h = sub(g,A);
+	  );	  
+      h = sub(Inv_0*x_(n+1),A);
      T = ideal(h);
 ---Generating linear equations to compute candidates for polynomial invariants. 
-S ={c};
+S ={In};
 i=0;
-while i < M-r*ad do (	
+while i < It do (	
 	k = 0;
 	while k < length S do (
 	 s=0;
-	while s< length mp do ( 
+	while s< length maps do ( 
 	j=0;
 	while j<n+1 do(
 	    A = {x_1=>S_k_0};
@@ -96,7 +74,7 @@ while i < M-r*ad do (
 	  A =join(A,{x_t=>a_t});
 	  t=t+1; 
 	  );
-      h = sub(g,A);
+      h = sub(Inv_0,A);
       T = T +ideal(h);
       k= k+1;
       );
@@ -104,5 +82,9 @@ while i < M-r*ad do (
 	);
 ---Constructing a matrix from linear equations    
 M = transpose (coefficients (gens T,Monomials=>{y_1..y_bm}))_1;
+
 M = sub(M, QQ);
 M = reducedRowEchelonForm M;
+return M;
+);
+end--

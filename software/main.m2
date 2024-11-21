@@ -5,6 +5,8 @@ load "computingtruncatedideals.m2"
 load "matrix.m2"
 load "InRadical.m2"
 load "Compose.m2"
+load "computeCan.m2"
+load "computeCanM.m2"
 computeInvariants = method()
 computeInvariants(String, ZZ) := (u,d)->(
 t1 = cpuTime();

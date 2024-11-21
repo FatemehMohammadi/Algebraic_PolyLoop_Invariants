@@ -42,13 +42,25 @@ i = i+1;
     );
     M = binomial(n+d,d);
     bm = M;
+    rm = M;
     ad = 1;
+    e= sub(e,R);
+        t = 1 ;
+while t<n+2 do (
+    x_t =sub(x_t,R);
+    t =t+1;
+    );
+    t = 1 ;
+while t<M+2 do (
+    y_t =sub(y_t,R);
+    t =t+1;
+    );
+G = sub(G, R);
     if length mp !=1 then (
-    	M = floor(log(length mp, M+1-r))+1;
+    	rm= floor(log(length mp, M+1-r))+1;
     	ad = 0;
     );
 --- Delete the next column
-    rm = M;
     S = 1;
     i =1 ;
 ---Generating all monomials with n variables up to degree d.     
@@ -59,91 +71,25 @@ i = i+1;
     C = first entries monomials S^d;
     g =0;
     i=1;
----Generating a general polynomial of degree d with n variables
-    while i<bm+1 do (
+     while i<bm+1 do (
     	g = g+y_i*C_(i-1);
     	i = i+1;
     	);
-     i = 1;
-    while i<n+1 do (
-	a_i = c_(i-1);
-	i = i+1;
-	);
-      A = {x_1=>a_1};
-      t =  2;
-      while t<n+1 do(
-	  A =join(A,{x_t=>a_t});
-	  t=t+1; 
-	  );
-      a_(n+1)=1;
-      A = {x_1=>a_1};
-      t =  2;
-      while t<n+2 do(
-	  A =join(A,{x_t=>a_t});
-	  t=t+1; 
-	  );
-      g = g*x_(n+1);	  
-      h = sub(g,A);
-     T = ideal(h);
----Generating linear equations to compute candidates for polynomial invariants. 
-S ={c};
-i=0;
-while i < M-r*ad do (	
-	k = 0;
-	while k < length S do (
-	 s=0;
-	while s< length mp do ( 
-	j=0;
-	while j<n+1 do(
-	    A = {x_1=>S_k_0};
-	    t =  2;
-	    while t<n+2 do(
-		A =join(A,{x_t=>S_k_(t-1)});
-		t=t+1; 
-		);
-	    b_(j+1) = sub(F_s_j,A);
-	    if j == 0 then (
-	     	bb={b_(j+1)};
-	    );
-	    if j != 0 then (
-	    	bb=join(bb,{b_(j+1)});
-	    );
-	    j=j+1;
-	    );
-	    if k+s==0 then(
-	S' = {bb};
-	);
-	if k+s!=0 then (
-	S' = join(S',{bb});
-	);
-	    s = s+1;
-	    );
-	 k=k+1;
-      );
-	S= S';
-	k= 0; 
-	while k < length S do(
-      j =0;
-	while j<n+1 do(
-	    a_(j+1) = S_k_j;
-	    j=j+1;
-	    );
-       A = {x_1=>a_1};
-      t =  2;
-      while t<n+2 do(
-	  A =join(A,{x_t=>a_t});
-	  t=t+1; 
-	  );
-      h = sub(g,A);
-      T = T +ideal(h);
-      k= k+1;
-      );
-	i=i+1;
-	);
----Constructing a matrix from linear equations    
-M = transpose (coefficients (gens T,Monomials=>{y_1..y_bm}))_1;
-M = sub(M, QQ);
-M = reducedRowEchelonForm M;
+---Generating a general polynomial of degree d with n variables
+M = computeCanM(mp, c,{g},rm-r*ad);
+M = matrix M;
+e =sub(e,R);
+       t = 1 ;
+while t<n+2 do (
+    x_t =sub(x_t,R);
+    t =t+1;
+    );
+    t = 1 ;
+while t<bm+2 do (
+    y_t =sub(y_t,R);
+    t =t+1;
+    );
+G = sub(G, R);
 ---Compute candidates
 A = ker M;
 B = matrix{{ }};
