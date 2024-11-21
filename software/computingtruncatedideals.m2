@@ -76,7 +76,7 @@ G = sub(G, R);
     	i = i+1;
     	);
 ---Generating a general polynomial of degree d with n variables
-M = computeCanM(mp, c,{g},rm-r*ad);
+M = computeCan(mp, c,{g},rm-r*ad);
 M = matrix M;
 e =sub(e,R);
        t = 1 ;
