@@ -1,5 +1,6 @@
 restart
 ---Loading the main algorithm.
+loadPackage "Parametrization"
 load "particularform.m2"
 load "computingtruncatedideals.m2"
 load "matrix.m2"
@@ -7,11 +8,20 @@ load "InRadical.m2"
 load "Compose.m2"
 load "computeCan.m2"
 load "computeCanM.m2"
+load "computeCanMultiple.m2"
+needsPackage "Parametrization"
 computeInvariants = method()
 computeInvariants(String, ZZ) := (u,d)->(
 t1 = cpuTime();
 ---Loading an example 
 load u;    
+Pr={2147483647,2147483629,2147483587,2147483579,2147483563,2147483549,2147483543,2147483497,2147483489,2147483477,2147483423,2147483399,2147483353,2147483323,2147483269, 2147483249};
+i =1;
+PP = Pr_0;
+while i < length Pr do(
+PP = PP*Pr_i;
+i=i+1;
+);
 M = binomial(n+d,d);
 U = binomial(n+d,d);
 K = QQ;

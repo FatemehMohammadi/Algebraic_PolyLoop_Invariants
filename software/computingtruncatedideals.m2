@@ -113,7 +113,6 @@ while InRadical(Xt, X) == false do(
 X = join(X, Xt);
 Xt= Compose(Xt, maps,n+1);
 N= N+1;
-print N;
 );
      D = {x_1=>c_0};
 	    t =  2;
