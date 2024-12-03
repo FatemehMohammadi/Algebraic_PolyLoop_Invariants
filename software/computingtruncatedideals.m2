@@ -1,9 +1,20 @@
 computebasis = method()
-computebasis(ZZ,ZZ,List,List) :=(n,d,F,c)-> (
+computebasis(ZZ,ZZ,List,List) :=(n,d,mp,c)-> (
+i = 0;
+while i < length mp do (
+    F_i = join((mp)_i, {x_(n+1)*G});
+    i = i+1
+    );
+    maps = {F_0};
+i =1;
+while i<length mapping() do (
+maps = join(maps, {F_i});
+i = i+1;
+);
     ---Using a vector basis of the (d-1)th truncated ideal to find a lower bound for the dimension of the dth truncated ideal. 
     r =0;
      if d>1 then (
-    computebasis(n,d-1,F,c);
+    computebasis(n,d-1,mp,c);
     I = ideal(A);
     J = ideal(0_R);
     i=0;
@@ -30,6 +41,26 @@ computebasis(ZZ,ZZ,List,List) :=(n,d,F,c)-> (
     	r = rank (coefficients gens J)_1 ;
     );
     M = binomial(n+d,d);
+    bm = M;
+    rm = M;
+    ad = 1;
+    e= sub(e,R);
+        t = 1 ;
+while t<n+2 do (
+    x_t =sub(x_t,R);
+    t =t+1;
+    );
+    t = 1 ;
+while t<M+2 do (
+    y_t =sub(y_t,R);
+    t =t+1;
+    );
+G = sub(G, R);
+    if length mp !=1 then (
+    	rm= floor(log(length mp, M+1-r))+1;
+    	ad = 0;
+    );
+--- Delete the next column
     S = 1;
     i =1 ;
 ---Generating all monomials with n variables up to degree d.     
@@ -40,62 +71,25 @@ computebasis(ZZ,ZZ,List,List) :=(n,d,F,c)-> (
     C = first entries monomials S^d;
     g =0;
     i=1;
----Generating a general polynomial of degree d with n variables
-    while i<M+1 do (
+     while i<bm+1 do (
     	g = g+y_i*C_(i-1);
     	i = i+1;
     	);
-    i = 1;
-    while i<n+1 do(
-	f_i = F_(i-1);
-	i=i+1;
-	);
-     i = 1;
-    while i<n+1 do (
-	a_i = c_(i-1);
-	i = i+1;
-	);
-      A = {x_1=>a_1};
-      t =  2;
-      while t<n+1 do(
-	  A =join(A,{x_t=>a_t});
-	  t=t+1; 
-	  );
-      h = sub(g,A);
-      T = ideal(h);
-    i=0;
----Generating linear equations to compute candidates for polynomial invariants. 
-    while i < M-r do (
-	j=0;
-	while j<n do(
-	    A = {x_1=>a_1};
-	    t =  2;
-	    while t<n+1 do(
-		A =join(A,{x_t=>a_t});
-		t=t+1; 
-		);
-	    b_(j+1) = sub(f_(j+1),A);
-	    j=j+1;
-	    );
-	j =0;
-	while j<n do(
-	    a_(j+1) = b_(j+1);
-	    j=j+1;
-	    );
-      A = {x_1=>a_1};
-      t =  2;
-      while t<n+1 do(
-	  A =join(A,{x_t=>a_t});
-	  t=t+1; 
-	  );
-      h = sub(g,A);
-      T = T +ideal(h);
-      i=i+1;
-	);
----Constructing a matrix from linear equations    
-M = transpose (coefficients (gens T,Monomials=>{y_1..y_M}))_1;
-M = sub(M, QQ);
-M = reducedRowEchelonForm M;
+---Generating a general polynomial of degree d with n variables
+M = computeCan(mp, c,{g},rm-r*ad);
+M = matrix M;
+e =sub(e,R);
+       t = 1 ;
+while t<n+2 do (
+    x_t =sub(x_t,R);
+    t =t+1;
+    );
+    t = 1 ;
+while t<bm+2 do (
+    y_t =sub(y_t,R);
+    t =t+1;
+    );
+G = sub(G, R);
 ---Compute candidates
 A = ker M;
 B = matrix{{ }};
@@ -106,34 +100,27 @@ P =N*A;
 l = numgens source P;
 ---Finding a vector basis for a truncated ideal.
 if l > 0 then (
-    ---Checking that all candidates are polynomial invariants simultaneously
- X_0 = ideal(P_(0,0));
+ ---Checking that all candidates are polynomial invariants simultaneously
+ X= {x_(n+1)*P_(0,0)};
+ N=0;
  j=1;
 while j< l do(
-    X_0 = ideal(X_0, P_(0,j));
+    X = join(X, {x_(n+1)*P_(0,j)});
     j=j+1;
     );
-D= {x_1=>f_1};
-	t =  2;
-	while t<n+1 do(
-	    D =join(D,{x_t=>f_t});
-		t=t+1; 
-		);
-    X_1=sub(X_0, D)+X_0;
-    i = 0;
-    while  isSubset(X_(i+1), X_i)==false  do (
-    	i = i+1;
-	print i;
-    	X_(i+1) = sub(X_i, D) + X_0 ;
-	);
+Xt = Compose(X,maps,n+1);
+while InRadical(Xt, X) == false do(
+X = join(X, Xt);
+Xt= Compose(Xt, maps,n+1);
+N= N+1;
+);
      D = {x_1=>c_0};
 	    t =  2;
-	    while t<n+1 do(
+	    while t<n+2 do(
 		D =join(D,{x_t=>c_(t-1)});
 		t=t+1; 
 		);
-    S=  sub(X_i,D);
-    
+    S=  sub(ideal X,D);    
 if S == ideal(0_R) then(
    A = P;  
     );
@@ -142,29 +129,28 @@ if S!=ideal(0_R) then(
 A = matrix{{}};
 j =0;
 while j< l do(
-    g = P_(0,j);
-    X_0 = ideal(g);
-    D= {x_1=>f_1};
-	t =  2;
-	while t<n+1 do(
-	    D =join(D,{x_t=>f_t});
-		t=t+1; 
-		);
-    g = sub(g,D);
-    i = 0;
-    while  ideal(X_i, 1-g*e) != ideal(1_R)  do (
-    	print i;
-    	X_(i+1) = ideal(X_i, g);
-    	g = sub(g,D);
-	i=i+1;
-	);
+X = {x_(n+1)*P_(0,j)};
+N=0;
+Xt = Compose(X,maps,n+1);
+while InRadical(Xt, X) == false do(
+X = join(X, Xt);
+Xt= Compose(Xt, maps,n+1);
+N= N+1;
+print N;
+);
      D = {x_1=>c_0};
 	    t =  2;
-	    while t<n+1 do(
+	    while t<n+2 do(
 		D =join(D,{x_t=>c_(t-1)});
 		t=t+1; 
 		);
-    S=  sub(X_i,D);
+     D = {x_1=>c_0};
+	    t =  2;
+	    while t<n+2 do(
+		D =join(D,{x_t=>c_(t-1)});
+		t=t+1; 
+		);
+    S=  sub(ideal X,D);
     if S == ideal(0_R) then(
     A =A|matrix{{P_(0,j)}};   
     ); 
@@ -185,31 +171,28 @@ if numgens source B > 1 then(
 	i = i+1;
 	);
     print h;
-    X_0 = ideal(h);
-    print X_0;
-     D= {x_1=>f_1};
-	t =  2;
-	while t<n+1 do(
-	    D =join(D,{x_t=>f_t});
-		t=t+1; 
-		);
-	    print D;
-    h = sub(h,D);
-    print h;
-    i = 0;
-    while  ideal(X_i, 1-h*e) != ideal(1_R)  do (
-    	print i;
-    	X_(i+1) = ideal(X_i, h);
-    	h = sub(h,D);
-	i=i+1;
-	);
+    X = {x_(n+1)*h};
+N=0;
+Xt = Compose(X,maps,n+1);
+while InRadical(Xt, X) == false do(
+X = join(X, Xt);
+Xt= Compose(Xt, maps,n+1);
+N= N+1;
+print N;
+);
      D = {x_1=>c_0};
 	    t =  2;
-	    while t<n+1 do(
+	    while t<n+2 do(
 		D =join(D,{x_t=>c_(t-1)});
 		t=t+1; 
 		);
-     T=  sub(X_i,D);
+     D = {x_1=>c_0};
+	    t =  2;
+	    while t<n+2 do(
+		D =join(D,{x_t=>c_(t-1)});
+		t=t+1; 
+		);
+     T=  sub(X,D);
      T = trim T;
      print T;
      l = numgens T;
