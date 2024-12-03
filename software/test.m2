@@ -3,6 +3,11 @@ load "Compose.m2"
 load "InRadical.m2"
 load "computeCan.m2"
 load "computeCanM.m2"
+A = 2.21113
+A = (A*100)//1
+A = floor(100*A)/100
+A = sub(A, RR)
+A = join{A,A}
 R = QQ[x_1,x_2,x_3,e, y_1,y_2]
 Compose({x_1,x_2},{{x_1^2,x_2^2},{x_1^3,x_2^3}},2)
 InRadical({x_1,x_1^2-x_1},{x_1^2})
