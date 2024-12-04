@@ -133,7 +133,6 @@ while i < length mapping() do (
     );
 t4 = cpuTime();
 particularform(A);
-t2 =cpuTime();
 << "------------------------------------------------------"<< endl;
 i=0;
 if numgens source H ==0 then(
@@ -147,6 +146,7 @@ i=i+1;
 );
 );
 << "where w_i is an initial value of x_i"<< endl;
+t2 =cpuTime();
 << "The running time is " <<t2-t1<< endl;
 )
 end --
