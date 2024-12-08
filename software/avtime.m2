@@ -6,10 +6,10 @@ iat=0;
 print num;
 while iat< num do(
 iat = iat+1;
-t1 = cpuTime();
+ta_1=cpuTime();
 computeInvariants(u,d);
-t2=cpuTime();
-t= t2-t1;
+ta_2=cpuTime();
+t = ta_2-ta_1;
 t = floor(t*1000)/1000;
 t = sub(t,RR);
 if iat ==1 then (
