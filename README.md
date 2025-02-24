@@ -15,7 +15,7 @@ M2 <benchmark-name>_d<invariants-max-degree>.m2
 ---
 The directory **"software"** contains the on-going implementation of the algorithm. In particular, it includes speedups that has not been described in the above document, and improve the timings. 
 
-In this directory, you will find a the source code together with a directory "loops" where the user can find loop examples (e.g. "fib2.m2") to run the software on.
+In this directory, you will find the source code together with a directory "loops" where the user can find loop examples (e.g. "fib2.m2") to run the software on.
 
 A short way to run the software is by the command:
 
