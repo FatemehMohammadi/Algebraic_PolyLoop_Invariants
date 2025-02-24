@@ -1,6 +1,6 @@
 InRadical = method()
 InRadical(List, List) := (Li, Id)->(
-i = 0;
+i = 0	;
 ind = 0;
 while i< length Li do(
 I = ideal(join({1-Li_i*e}, Id));
